@@ -1,3 +1,4 @@
+import { UsePipes, ValidationPipe } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
 import { UserInput } from './requests/user.loginRequest';
@@ -12,6 +13,7 @@ export class AuthResolver {
   }
 
   @Mutation(() => UserLoginResponse)
+  @UsePipes(ValidationPipe)
   async register(@Args() user: UserInput) {
     return await this.authService.registerUser(user.username, user.password);
   }
