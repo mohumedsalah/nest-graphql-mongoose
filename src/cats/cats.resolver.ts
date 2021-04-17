@@ -1,6 +1,6 @@
 import { UsePipes, ValidationPipe } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CatsService } from './cats.services';
+import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/cats.dto';
 import { CatInput } from './inputs/cat.input';
 

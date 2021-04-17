@@ -9,6 +9,10 @@ type CreateCatDto {
   breed: String!
 }
 
+type UserLoginResponse {
+  access_token: String!
+}
+
 type Query {
   hello: String!
   cats: [CreateCatDto!]!
@@ -16,4 +20,6 @@ type Query {
 
 type Mutation {
   createCat(name: String!, age: Int!, breed: String!): CreateCatDto!
+  login(username: String!, password: String!): UserLoginResponse!
+  register(username: String!, password: String!): UserLoginResponse!
 }
