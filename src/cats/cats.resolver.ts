@@ -1,3 +1,4 @@
+import { UsePipes, ValidationPipe } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CatsService } from './cats.services';
 import { CreateCatDto } from './dto/cats.dto';
@@ -18,7 +19,8 @@ export class CatsResolver {
   }
 
   @Mutation(() => CreateCatDto)
-  async createCat(@Args('input') input: CatInput) {
-    return this.catsService.create(input);
+  @UsePipes(ValidationPipe)
+  async createCat(@Args() args: CatInput) {
+    return this.catsService.create(args);
   }
 }

@@ -15,11 +15,5 @@ type Query {
 }
 
 type Mutation {
-  createCat(input: CatInput!): CreateCatDto!
-}
-
-input CatInput {
-  name: String!
-  age: Int!
-  breed: String!
+  createCat(name: String!, age: Int!, breed: String!): CreateCatDto!
 }
