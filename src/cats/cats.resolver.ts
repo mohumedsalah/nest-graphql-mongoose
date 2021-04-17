@@ -1,5 +1,7 @@
-import { UsePipes, ValidationPipe } from '@nestjs/common';
+import { UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { AuthenticationGuard } from 'src/auth/authentication.guard';
+import { CurrentUser } from 'src/auth/decorator/currentUser.decorator';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/cats.dto';
 import { CatInput } from './inputs/cat.input';
@@ -14,7 +16,9 @@ export class CatsResolver {
   }
 
   @Query(() => [CreateCatDto])
-  async cats() {
+  @UseGuards(AuthenticationGuard)
+  async cats(@CurrentUser() user: any) {
+    console.log('user ===========> :', user);
     return this.catsService.findAll();
   }
 
