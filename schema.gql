@@ -15,16 +15,16 @@ type CatDto {
   owner: OwnerDto!
 }
 
-type UserLoginResponse {
+type AccessTokenDTO {
   access_token: String!
 }
 
 type Query {
-  hello: String!
   cats: [CatDto!]!
 }
 
 type Mutation {
-  login(username: String!, password: String!): UserLoginResponse!
-  register(username: String!, password: String!): UserLoginResponse!
+  createCat(name: String!, age: Int!, breed: String!): CatDto!
+  login(username: String!, password: String!): AccessTokenDTO!
+  register(username: String!, password: String!): AccessTokenDTO!
 }
