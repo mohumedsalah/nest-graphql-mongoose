@@ -2,11 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CreateCatDto {
+type OwnerDto {
+  _id: ID!
+  username: String!
+}
+
+type CatDto {
   _id: ID!
   name: String!
   age: Int!
   breed: String!
+  owner: OwnerDto!
 }
 
 type UserLoginResponse {
@@ -15,11 +21,10 @@ type UserLoginResponse {
 
 type Query {
   hello: String!
-  cats: [CreateCatDto!]!
+  cats: [CatDto!]!
 }
 
 type Mutation {
-  createCat(name: String!, age: Int!, breed: String!): CreateCatDto!
   login(username: String!, password: String!): UserLoginResponse!
   register(username: String!, password: String!): UserLoginResponse!
 }

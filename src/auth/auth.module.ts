@@ -14,7 +14,7 @@ import { JwtStrategy } from './guard/jwt.strategy';
     PassportModule,
     JwtModule.register({
       secret: authConstants.jwtSecret,
-      signOptions: { expiresIn: '500s' },
+      signOptions: { expiresIn: '5d' },
     }),
   ],
   providers: [AuthService, AuthResolver, JwtStrategy],

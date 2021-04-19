@@ -16,7 +16,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any) {
     // this after convert token to payload this object will assign to req.user
     // then you can use it
-    console.log('authenticate');
     return { _id: payload._id, username: payload.username };
   }
 }

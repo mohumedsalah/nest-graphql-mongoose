@@ -8,9 +8,11 @@ export class CatInput {
   @IsString()
   @MinLength(3)
   readonly name: string;
+
   @Field(() => Int)
   @IsNumber()
   readonly age: number;
+
   @Field()
   @IsString()
   @MinLength(3)
